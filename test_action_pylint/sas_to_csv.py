@@ -1,21 +1,23 @@
-import pandas as pd
+""""
+This script converts a SAS file to a CSV file using pandas.
+"""
+
 import csv
+import pandas as pd
 
 # Replace 'your_sas_file.sas7bdat' with the actual filename
-sas_file = f"C:\\temp\\sas_files\\servicecontacts_2021.sas7bdat"
-csv_file = f"C:\\temp\\sas_files\\Service Contacts - year4.csv"
+SAS_FILE = f"C:\\temp\\sas_files\\servicecontacts_2021.sas7bdat"
+CSV_FILE = f"C:\\temp\\sas_files\\Service Contacts - year4.csv"
 
 try:
     # Read the SAS file into a pandas DataFrame
-    df = pd.read_sas(sas_file, encoding='latin-1')
-    
-    # Write the DataFrame to a CSV file, excluding the index
-    df.to_csv(csv_file, index=False, quoting=csv.QUOTE_NONNUMERIC)
+    df = pd.read_sas(SAS_FILE, encoding='latin-1')
 
-    print(f"Successfully converted {sas_file} to {csv_file}")
+    # Write the DataFrame to a CSV file, excluding the index
+    df.to_csv(CSV_FILE, index=False, quoting=csv.QUOTE_NONNUMERIC)
+
+    print(f"Successfully converted {SAS_FILE} to {CSV_FILE}")
 
 
 except FileNotFoundError:
-    print(f"Error: File not found: {sas_file}")
-except Exception as e:
-    print(f"An error occurred: {e}")
+    print(f"Error: File not found: {SAS_FILE}")
